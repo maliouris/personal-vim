@@ -1,0 +1,91 @@
+set relativenumber
+set clipboard+=unnamed
+set ideajoin
+set scrolloff=10
+" move with hjkl in project files
+set NERDTree
+" highlight search results
+set hlsearch
+" case-insensitive search
+set ignorecase
+" enable case-sensitive search when uppercased letter is present
+set smartcase
+" start searching as you type
+set incsearch
+" change sourrounding with cs"'
+set surround
+set ideawrite=file
+set visualbell
+set iskeyword+=$
+
+" remove search highlights
+noremap <Esc> :nohlsearch<cr>
+
+noremap U <C-r>
+
+"set timeoutlen=300
+let mapleader = ' '
+
+" Easy access ideavimrc
+noremap <leader>cc :edit ~/.ideavimrc<cr>
+noremap <leader>cs :source ~/.ideavimrc<cr>:nohlsearch<cr>
+
+" find
+nmap <leader>fa <Action>(SearchEverywhere)
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>fac <Action>(GotoAction)
+nmap <leader>ft <Action>(FindInPath)
+nmap <leader>rt <Action>(FindInPath)
+
+" go to
+nmap <leader>gd <Action>(GotoDeclarationOnly)
+nmap <leader>gu <Action>(GotoDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gs <Action>(GotoSuperMethod)
+
+" show
+nmap <leader>si <Action>(ShowHoverInfo)
+nmap <leader>ss <Action>(FileStructurePopup)
+nmap <leader>sa <Action>(ShowIntentionActions)
+nmap <leader>sp <Action>(ActivateProblemsViewToolWindow)
+
+nmap <leader>run <Action>(RunClass)
+nmap <leader>rr <Action>(Rerun)
+
+" split screens and move files
+nmap <C-S-j> <Action>(SplitChooser)<Action>(SplitChooser.SplitDown)<Action>(SplitChooser.Split)
+nmap <C-S-l> <Action>(SplitChooser)<Action>(SplitChooser.SplitRight)<Action>(SplitChooser.Split)
+nmap <C-S-k> <Action>(SplitChooser)<Action>(SplitChooser.SplitTop)<Action>(SplitChooser.Split)
+nmap <C-S-h> <Action>(SplitChooser)<Action>(SplitChooser.SplitLeft)<Action>(SplitChooser.Split)
+
+" Use ctrl-[hjkl] to select the active split! see #https://stackoverflow.com/questions/6053301/easier-way-to-navigate-between-vim-split-panes
+nmap <C-k> <C-w>k
+nmap <C-j> <C-w>j
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+
+" Split screens and duplicate files
+nmap <leader>wv <Action>(SplitVertically)
+nmap <leader>wh <Action>(SplitHorizontally)
+nmap <leader>ww <Action>(Unsplit)
+nmap <leader>wa <Action>(UnsplitAll)
+
+" tabs
+nmap <leader>tcg <Action>(CloseAllEditors)
+nmap <leader>tco <Action>(CloseAllEditorsButActive)
+nmap <leader>tmo <Action>(MoveEditorToOppositeTabGroup)
+nmap <C-n> <Action>(NextTab)
+nmap <C-S-n> <Action>(PreviousTab)
+
+" ai
+map <leader>aia <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
+
+" region
+map <leader>rge <Action>(ExpandRegion)
+map <leader>rgc <Action>(CollapseRegion)
+
+nmap <leader>pp "0p
+nmap <leader>pc "+p
+
+nmap <cr> o<esc>
+nmap <S-cr> O<esc>
