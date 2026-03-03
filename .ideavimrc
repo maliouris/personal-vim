@@ -1,5 +1,5 @@
 set relativenumber
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 set ideajoin
 set scrolloff=10
 " move with hjkl in project files
@@ -17,14 +17,20 @@ set surround
 set ideawrite=file
 set visualbell
 set iskeyword+=$
+set nohighlightedyank
 
 " remove search highlights
 noremap <Esc> :nohlsearch<cr>
 
 noremap U <C-r>
 
+vunmap " "
+xunmap " "
 "set timeoutlen=300
 let mapleader = ' '
+
+" replace selected text without losing the paste register
+xnoremap <leader>p \"_dP
 
 " Easy access ideavimrc
 noremap <leader>cc :edit ~/.ideavimrc<cr>
@@ -35,13 +41,15 @@ nmap <leader>fa <Action>(SearchEverywhere)
 nmap <leader>ff <Action>(GotoFile)
 nmap <leader>fac <Action>(GotoAction)
 nmap <leader>ft <Action>(FindInPath)
-nmap <leader>rt <Action>(FindInPath)
+nmap <leader>fr <Action>(RecentFiles)
 
 " go to
 nmap <leader>gd <Action>(GotoDeclarationOnly)
 nmap <leader>gu <Action>(GotoDeclaration)
 nmap <leader>gi <Action>(GotoImplementation)
 nmap <leader>gs <Action>(GotoSuperMethod)
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gvu <Action>(com.laravel_idea.plugin.GoToViewUsagesAction)
 
 " show
 nmap <leader>si <Action>(ShowHoverInfo)
@@ -49,8 +57,12 @@ nmap <leader>ss <Action>(FileStructurePopup)
 nmap <leader>sa <Action>(ShowIntentionActions)
 nmap <leader>sp <Action>(ActivateProblemsViewToolWindow)
 
-nmap <leader>run <Action>(RunClass)
+nmap <leader>rt <Action>(RunClass)
+nmap <leader>rd <Action>(DebugClass)
 nmap <leader>rr <Action>(Rerun)
+
+nmap <leader>deb <Action>(PhpListenDebugAction)
+nmap <leader>dem <Action>(ToggleLineBreakpoint)
 
 " split screens and move files
 nmap <C-S-j> <Action>(SplitChooser)<Action>(SplitChooser.SplitDown)<Action>(SplitChooser.Split)
@@ -74,8 +86,8 @@ nmap <leader>wa <Action>(UnsplitAll)
 nmap <leader>tcg <Action>(CloseAllEditors)
 nmap <leader>tco <Action>(CloseAllEditorsButActive)
 nmap <leader>tmo <Action>(MoveEditorToOppositeTabGroup)
-nmap <C-n> <Action>(NextTab)
-nmap <C-S-n> <Action>(PreviousTab)
+nmap <C-tab> <Action>(NextTab)
+nmap <C-S-tab> <Action>(PreviousTab)
 
 " ai
 map <leader>aia <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
@@ -84,8 +96,10 @@ map <leader>aia <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
 map <leader>rge <Action>(ExpandRegion)
 map <leader>rgc <Action>(CollapseRegion)
 
-nmap <leader>pp "0p
-nmap <leader>pc "+p
-
 nmap <cr> o<esc>
 nmap <S-cr> O<esc>
+
+" git
+nmap <leader>gitb <Action>(Git.Branches)
+
+map <c-5> <Action>(ActivateDebugToolWindow)
